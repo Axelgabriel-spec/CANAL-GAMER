@@ -17,11 +17,21 @@ body {
   background-color: #f80808;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between; /* Distribuye el título a la izquierda y el botón a la derecha */
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo del texto Canal Gamer */
+.banner-title {
+  color: #ffffff; /* Letras de color blanco */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Botón Hamburguesa */
