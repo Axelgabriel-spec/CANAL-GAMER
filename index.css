@@ -1,50 +1,99 @@
-/* --- ESTILOS GENERALES Y DESKTOP (PC) --- */
+/* --- ESTILOS GENERALES --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #121212;
   color: #ffffff;
+  padding-top: 50px; /* Espacio reservado para el banner fijo superior */
 }
 
-/* Ocultar barra superior y botón de hamburguesa en PC */
-.banner,
-.menu-toggle {
-  display: none;
-}
-
-/* Menú Lateral Fijo (PC) */
-.menu-container {
-  width: 230px;
-  background: #1a1a1a;
-  color: #fff;
-  padding: 20px;
-  box-sizing: border-box;
+/* Banner Superior Fijo (PC y Móvil) */
+.banner {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  overflow-y: auto;
-  border-right: 1px solid #333;
-  z-index: 900;
+  width: 100%;
+  height: 50px;
+  background-color: #f80808;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Botón Hamburguesa */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación a 'X' al presionar el botón */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Menú Desplegable Superior (PC y Móvil) */
+.menu-container {
+  width: 100%;
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  padding: 0 20px;
+  background: #1a1a1a;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+/* Clase que activa el menú desplegado */
+.menu-container.active {
+  max-height: 400px;
+  padding: 20px;
 }
 
 .menu-header h2 {
-  font-size: 1rem;
-  color: #ff4500;
-  margin-top: 0;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #444;
-  padding-bottom: 8px;
+  display: none; /* Ocultar para mantener la vista limpia */
 }
 
 .menu-links {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .menu-links a {
   display: block;
+  text-align: center;
   padding: 12px 15px;
   color: #ddd;
   text-decoration: none;
@@ -59,13 +108,15 @@ body {
   color: #fff;
 }
 
-/* Contenido Principal (PC) */
+/* Contenido Principal Centrado */
 .main-container {
-  margin-left: 230px;
+  margin-left: 0;
   padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Cuadrículas de Videos (Iframes) */
+/* Cuadrícula de Videos */
 .grid-videos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,95 +210,7 @@ body {
   font-weight: bold;
 }
 
-/* --- ADAPTACIÓN EXCLUSIVA PARA CELULARES (Pantallas < 768px) --- */
-@media (max-width: 768px) {
-  body {
-    padding-top: 50px;
-  }
-
-  /* Mostrar la barra roja superior en móvil */
-  .banner {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #f80808;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Mostrar botón de 3 líneas en móvil */
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .menu-toggle span {
-    width: 100%;
-    height: 3px;
-    background-color: #ffffff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  /* Convertir el menú lateral a desplegable superior en celular */
-  .menu-container {
-    width: 100%;
-    height: auto;
-    max-height: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 50px;
-    left: 0;
-    padding: 0 20px;
-    background: #1a1a1a;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.5);
-    border-right: none;
-  }
-
-  /* Menú desplegado cuando se presiona la hamburguesa */
-  .menu-container.active {
-    max-height: 300px;
-    padding: 20px;
-  }
-
-  .menu-header h2 {
-    display: none;
-  }
-
-  .main-container {
-    margin-left: 0;
-    padding: 10px;
-  }
-
-  /* Animación a 'X' del botón hamburguesa */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-  }
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
-  }
-
-  .short {
-    width: 100%;
-    max-width: 300px;
-    height: 450px;
-  }
+.description-text {
+  text-align: center;
+  line-height: 1.6;
 }
