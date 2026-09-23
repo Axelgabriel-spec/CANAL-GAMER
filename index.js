@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
-  const menuContainer = document.querySelector(".menu-container");
+  const menuContainer = document.getElementById("menuContainer") || document.querySelector(".menu-container");
   const menuLinks = document.querySelectorAll(".menu-links a");
 
-  // Función para abrir/cerrar el menú al hacer clic en el botón hamburguesa
+  // Alternar apertura y cierre del menú al hacer clic en el botón hamburguesa
   if (menuToggle && menuContainer) {
     menuToggle.addEventListener("click", () => {
       menuToggle.classList.toggle("active");
@@ -11,17 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Cerrar el menú automáticamente al hacer clic en cualquier enlace del menú
+  // Manejar clics en los enlaces del menú
   menuLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      if (menuContainer.classList.contains("active")) {
+      // Cerrar el menú si está abierto
+      if (menuContainer && menuContainer.classList.contains("active")) {
         menuToggle.classList.remove("active");
         menuContainer.classList.remove("active");
       }
 
       // Desplazamiento suave (Smooth Scroll)
       const targetId = link.getAttribute("href");
-      if (targetId.startsWith("#")) {
+      if (targetId && targetId.startsWith("#")) {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
