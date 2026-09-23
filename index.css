@@ -47,13 +47,19 @@ body {
   transition: transform 0.3s ease;
 }
 
-.menu-header h2 {
-  font-size: 1rem;
-  color: #ff4500;
-  margin-top: 0;
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
   border-bottom: 1px solid #444;
   padding-bottom: 8px;
+}
+
+.menu-header h2 {
+  font-size: 1rem;
+  color: #ff4500;
+  margin: 0;
 }
 
 .menu-links {
@@ -78,9 +84,9 @@ body {
   color: #fff;
 }
 
-/* Botón Hamburguesa (Oculto en Desktop) */
+/* Botón Hamburguesa (Forzado a estar siempre visible) */
 .menu-toggle {
-  display: none;
+  display: flex !important;
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
@@ -199,18 +205,13 @@ body {
   font-weight: bold;
 }
 
-/* --- ADAPTACIÓN RESPONSIVA PARA MOVILES (Pantallas < 768px) --- */
+/* --- ADAPTACIÓN RESPONSIVA PARA MÓVILES (Pantallas < 768px) --- */
 @media (max-width: 768px) {
   /* Banner y Encabezado Móvil */
   .banner {
     justify-content: space-between;
     padding: 0 15px;
     box-sizing: border-box;
-  }
-
-  /* Mostrar botón hamburguesa */
-  .menu-toggle {
-    display: flex;
   }
 
   /* Transformación del menú lateral a flotante/desplegable */
