@@ -6,7 +6,7 @@
   <meta name="google-site-verification" content="1o7aerd5zO0EwlmFuDk4YTeNfAOEAvCdpw3hBRpB8tw" />
   <title>CANAL DE OTAKUGAMER</title>
   <link rel="icon" type="image/png" href="canal.png">
-  <link rel="stylesheet" href="App.css" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
@@ -15,10 +15,19 @@
     <h1>OTAKUGAMER22M</h1>
   </header>
 
-  <!-- Menú de navegación -->
+  <!-- Menú de navegación con Botón Hamburguesa Integrado -->
   <nav class="menu-container">
-    <h2>BIENVENIDO A MI PAGINA WEB</h2>
-    <div class="menu-links">
+    <div class="menu-header">
+      <h2>BIENVENIDO A MI PAGINA WEB</h2>
+      <!-- Botón de tres líneas (Hamburguesa) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <div class="menu-links" id="menuLinks">
       <a href="#inicio">INICIO</a>
       <a href="#shorts">SHORTS YOUTUBE</a>
       <a href="#reciente">CONTENIDO RECIENTE</a>
