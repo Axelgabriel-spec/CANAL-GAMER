@@ -1,4 +1,4 @@
-/* --- ESTILOS GENERALES Y DESKTOP --- */
+/* --- ESTILOS GENERALES Y DESKTOP (PC) --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,31 +6,13 @@ body {
   color: #ffffff;
 }
 
-/* Banner Superior */
-.banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #f80808;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 15px;
-  box-sizing: border-box;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+/* Ocultar barra superior y botón de hamburguesa en PC */
+.banner,
+.menu-toggle {
+  display: none;
 }
 
-/* Ocultar la barra superior en PC */
-@media (min-width: 769px) {
-  .banner {
-    display: none;
-  }
-}
-
-/* Menú Lateral (PC) */
+/* Menú Lateral Fijo (PC) */
 .menu-container {
   width: 230px;
   background: #1a1a1a;
@@ -58,7 +40,7 @@ body {
 .menu-links {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Separación entre botones */
+  gap: 12px;
 }
 
 .menu-links a {
@@ -75,33 +57,6 @@ body {
 .menu-links a:hover {
   background: #ff0000;
   color: #fff;
-}
-
-/* Botón Hamburguesa (Solo en Móvil) */
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none; /* Ocultar el botón hamburguesa en pantalla grande */
-  }
-}
-
-.menu-toggle span {
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
 }
 
 /* Contenido Principal (PC) */
@@ -204,13 +159,51 @@ body {
   font-weight: bold;
 }
 
-/* --- ADAPTACIÓN PARA MÓVILES (Pantallas < 768px) --- */
+/* --- ADAPTACIÓN EXCLUSIVA PARA CELULARES (Pantallas < 768px) --- */
 @media (max-width: 768px) {
   body {
-    padding-top: 50px; /* Compensar la barra roja fija superior */
+    padding-top: 50px;
   }
 
-  /* Menú desplegable flotante */
+  /* Mostrar la barra roja superior en móvil */
+  .banner {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f80808;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Mostrar botón de 3 líneas en móvil */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Convertir el menú lateral a desplegable superior en celular */
   .menu-container {
     width: 100%;
     height: auto;
@@ -226,7 +219,7 @@ body {
     border-right: none;
   }
 
-  /* Estado activo al presionar las 3 rayas */
+  /* Menú desplegado cuando se presiona la hamburguesa */
   .menu-container.active {
     max-height: 300px;
     padding: 20px;
@@ -236,13 +229,12 @@ body {
     display: none;
   }
 
-  /* Margen corregido para celular */
   .main-container {
     margin-left: 0;
     padding: 10px;
   }
 
-  /* Transformación de tres barras a 'X' */
+  /* Animación a 'X' del botón hamburguesa */
   .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
   }
